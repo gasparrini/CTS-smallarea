@@ -25,15 +25,13 @@ lndtmeangrid <- (lndtmingrid + lndtmaxgrid) /2
 
 # PLOT THE MAPS
 # - START FROM THE RASTER OBJECT AND AGGREGATE LAYERS BY YEAR
-# - EXTRACT THE VALUES (TWO COLUMNS BY LAYER/YEAR)
 # - INCLUDE IN A DATAFRAME WITH THE RELATED CELL COORDINATES
 # - THEN RESHAPE TO LONG AND RENAME YEAR LABELS
 # - FINALLY PLOT THE GRIDDED VALUES AND SUPERIMPOSED MSOA BOUNDARIES
 lndtmeangrid |>
   tapp(year(seqdate), mean) |>
-  values() |>
-  data.frame(xyFromCell(lndtmeangrid, seq(ncell(lndtmeangrid)))) |>
-  pivot_longer(cols=1:2, names_to="year", values_to="tmean") |>
+  as.data.frame(xy=T) |>
+  pivot_longer(cols=3:4, names_to="year", values_to="tmean") |>
   mutate(year=factor(year, labels=unique(year(seqdate)))) |>
   ggplot(aes(x=x, y=y, fill=tmean)) +
   geom_raster(na.rm=T) +

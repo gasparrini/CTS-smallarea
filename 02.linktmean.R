@@ -91,3 +91,4 @@ lndmsoashp %>%
 
 # SAVE THE PLOT
 ggsave("figures/fig3.pdf", width=10, height=3.5)
+

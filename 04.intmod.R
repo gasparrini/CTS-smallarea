@@ -48,5 +48,3 @@ par(parold)
 
 # SAVE THE PLOT
 dev.print(pdf, file="figures/fig5.pdf", width=7, height=4)
-
-  

@@ -21,10 +21,12 @@
 spldoy <- onebasis(datafull$doy, "ns", df=3)
 
 # DEFINE THE CROSS-BASIS FOR TEMPERATURE FROM THE EXPOSURE HISTORY MATRIX
-# NB: NO NEED TO USE group AS MULTIPLE SERIES ALREADY DEFINED IN THE MATRIX
+# NB: USE group TO IDENTIFY LACK OF CONTINUITY IN SERIES BY MSOA AND YEAR
 argvar <- list(fun="ns", knots=quantile(datafull$tmean, c(50,90)/100, na.rm=T))
 arglag <- list(fun="ns", knots=1)
-cbtmean <- crossbasis(datafull$tmean, lag=3, argvar=argvar, arglag=arglag)
+group <- factor(paste(datafull$MSOA11CD, datafull$year, sep="-"))
+cbtmean <- crossbasis(datafull$tmean, lag=3, argvar=argvar, arglag=arglag,
+  group=group)
 summary(cbtmean)
 
 # DEFINE THE STRATA 

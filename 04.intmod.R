@@ -22,8 +22,8 @@ lookup <- read.csv("data/lookup.csv")
 lndmsoaimd <- merge(data.table(lookup), lndlsoaimd)[, 
   list(imdscore=mean(imdscore), imdrank=mean(imdrank)), by=MSOA11CD]
 
-# MERGE WITH MAIN DATASET
-datafull <- merge(datafull, lndmsoaimd, by="MSOA11CD")
+# MERGE WITH MAIN DATASET AND REORDER
+datafull <- merge(datafull, lndmsoaimd, by="MSOA11CD") |> setkey(MSOA11CD, date)
 
 # DEFINE INTERACTION CROSS-BASES WITH LINEAR IMD SCORE
 intval <- quantile(lndmsoaimd$imdscore, c(0.25, 0.75))

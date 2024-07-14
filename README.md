@@ -4,7 +4,7 @@ A case-study illustration on the application of the case time series design for 
 
 ------------------------------------------------------------------------
 
-This repository stores the updated R code and data to reproduce the analyisis of the case study presented in the article:
+This repository stores the updated R code and data to reproduce the analysis of the case study presented in the article:
 
 Gasparrini A. A tutorial on the case time series design for small-area analysis. *BMC Medical Research Methodology*. 2022;22:129. DOI: doi.org/10.1186/s12874-022-01612-x. [[freely available here](http://www.ag-myresearch.com/2022_gasparrini_bmcmrm.html)]
 
@@ -29,5 +29,5 @@ The five R scripts reproduces all the steps of the analysis and the full results
 -   *00.pkg.R* loads the packages.
 -   *01.tsprep.R* prepares the data in a case time series format starting from the original mortality data.
 -   *02.linktmean.R* links the gridded temperature data.
--   *03.mainmof.R* performs the main model and a comparison with the standard time series model on fully aggregated data.
+-   *03.mainmod.R* performs the main model and a comparison with the standard time series model on fully aggregated data.
 -   *04.intmod.R* investigates the differential risks by deprivation score.
